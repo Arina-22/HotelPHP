@@ -1,5 +1,5 @@
 <?php
-require 'db.php'; 
+require 'db.php';
 
 // Запрос к базе данных
 $sql = "SELECT type FROM room_types";
@@ -8,7 +8,7 @@ $result = $conn->query($sql);
 $room_types = [];
 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $room_types[] = $row['type'];
     }
 }
@@ -27,9 +27,9 @@ $conn->close();
             <ul id="room-types" style="display: none;">
                 <?php foreach ($room_types as $type): ?>
                     <li>
-                        <a href="room.php?type=<?= $type ?>">
-                            <?= $type?> 
-                        </a>
+                        <a href="<?= $type?>-rooms.php">
+                            <?= $type ?>
+                        </a>                     
                     </li>
                 <?php endforeach; ?>
             </ul>

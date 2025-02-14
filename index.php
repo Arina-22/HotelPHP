@@ -139,7 +139,7 @@
 
     <script>
         document.getElementById('room-toggle').onclick = function (event) {
-            // event.preventDefault();
+            event.preventDefault();
             const roomTypesList = document.getElementById('room-types');
             roomTypesList.style.display = roomTypesList.style.display === 'none' ? 'block' : 'none';
         };    
