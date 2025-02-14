@@ -1,0 +1,354 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #fff;
+}
+
+.hero {
+    background-image: url('../images/hero_background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 91.7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero > h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 400;
+    width: 50%;
+    line-height: 110%;
+}
+
+.hero > h1 > span {
+    font-weight: 400;
+    padding-right: 10px;
+}
+
+.hero > p{
+    text-transform: uppercase;
+}
+
+.booking-form {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 25px 50px;
+    border-radius: 10px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-form > form > div{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.form-group {
+    background-color: #FFFAF8;
+    border-radius: 6px;
+    margin: 0 0 35px 0;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+}
+
+.form-group > label {
+    display: block;
+    font-weight: 500;
+}
+
+.form-group > input[type="date"],
+.form-group > input[type="number"] {
+    padding: 0;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    background-color: transparent;
+    padding: 0 10px;
+}
+
+.form-group > input[type="number"]{
+    width: 60%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="number"] {
+    width: 20px;
+    height: 20px; 
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+input[type="date"]:focus,
+input[type="number"]:focus{
+    outline-color: #52463B;
+}
+
+input[type="checkbox"] {
+    accent-color: #332b25; 
+    border: 2px solid #332b25; 
+}
+
+input[type="checkbox"]:checked {
+    border-color: #52463B; 
+}
+
+.room-checkboxes{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 6px;
+}
+
+.room-checkboxes > div{
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    background-color: #52463B;
+    color: white;
+    padding: 12px 30px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+button>a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #332b25;
+}
+
+.intro {
+    background-color: #FFFAF8;
+    padding: 100px 0 70px;
+    color: #52463B;
+}
+
+.intro > .container{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 14px;
+    gap: 40px;
+}
+
+.intro > .container > p {
+    flex: 10; 
+}
+
+.intro > .container > div {
+    flex: 9; 
+}
+
+.intro > .container > div > button{
+    margin-top: 20px;
+}
+
+.weekend {
+    text-align: center;
+    padding-top: 100px;
+    font-size: 4em;
+    color: #52463B;
+    line-height: 170%;
+}
+
+.weekend > h1{
+    font-weight: 600;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    width: 90%;
+}
+
+.weekend > h1 > span{
+    font-family: "WindSong", serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    padding-right: 30px;
+}
+
+span{
+    font-family: "WindSong", serif;
+    font-size: 1.5em;
+}
+
+.weekend > div{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    background-image: url(../images/weekend.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.weekend > div >p{
+    color: #fff;
+    font-size: 14px;
+    text-align: left;
+    width: 20%;
+    margin-left: 75%;
+    margin-top: 60px;
+    line-height: 140%;
+}
+
+.room-types {
+    padding: 100px 120px;
+    text-align: center;
+    color: #333333;
+}
+
+.room-types h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.room-types > .container > p {
+    font-size: 1em;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 50%;
+    line-height: 140%;
+}
+
+.room-cards {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.room-card {
+    background-color: #FFFAF8; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    border-radius: 6px; 
+    padding: 20px;
+    text-decoration: none;
+    color: #333333; 
+    width: 25%; 
+    transition: transform 0.3s; 
+}
+
+.room-card:hover {
+    transform: scale(1.03); 
+}
+
+.room-card h3 {
+    font-size: 1em;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.room-card p {
+    font-size: 0.87em;
+}
+
+.gallery {
+    background-color: #FFFAF8;
+    padding: 50px 0 100px 0;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2em;
+    margin: 100px 0 20px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.gallery p {
+    font-size: 1em;
+    color: #333333;
+    line-height: 140%;
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 11px; 
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.33% - 11px);
+}
+
+.gallery-item img {
+    width: 100%; 
+    border-radius: 6px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        flex: 1 1 100%; 
+    }
+}

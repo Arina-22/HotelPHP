@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #fff;
+}
+
+.hero {
+    background-image: url('../images/standart_background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero > h1 {
+    font-size: 3em;
+    font-weight: 400;
+    width: 50%;
+    line-height: 110%;
+}
+
+.hero > h1 > span {
+    font-weight: 400;
+    padding-right: 20px;
+    font-family: "WindSong", serif;
+    font-size: 1.5em;
+}
+
+.filter {
+    color: #333333;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0; 
+}
+
+.filter h2 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.filter-group {
+    background-color: #FFFAF8; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    border-radius: 6px; 
+    padding: 15px;
+    flex: 1; 
+    min-width: 150px;
+}
+
+.filter-group h3 {
+    margin: 0 0 10px; 
+}
+
+.filter-group label {
+    display: block; 
+    margin-bottom: 5px; 
+    font-size: 0.9em; /
+}
+
+.rooms {
+    padding: 40px 20px;
+    background-color: #fff; 
+}
+
+.room-cards {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+.room-card {
+    display: flex;
+    background-color: #FFFAF8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    border-radius: 6px; 
+    padding: 30px 40px;
+    margin-top: 60px;
+}
+
+.room-name > img {
+    width: 65%;
+    border-radius: 6px; 
+    margin-right: 20px; 
+}
+
+.room-name h3{
+    color: #333333;
+    margin: 0 0 30px; 
+    font-weight: 500;
+    font-size: 1.8em;
+}
+
+.room-details {
+    color: #333333;
+    display: flex;
+    gap: 10px;
+    flex-direction: column; 
+    justify-content: center; 
+    margin-top: 40px;
+}
+
+.room-details p {
+    margin: 5px 0; 
+}
+
+.room-details img {
+    width: 25px;
+}
+
+.one-room-details{
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background-color: #52463B;
+    color: white;
+    padding: 12px 30px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 30px;
+}
+
+button>a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #332b25;
+}
+
+.gallery {
+    background-color: #FFFAF8;
+    padding: 50px 0 100px 0;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2em;
+    margin: 100px 0 20px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.gallery p {
+    font-size: 1em;
+    color: #333333;
+    line-height: 140%;
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}

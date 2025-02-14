@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    color: #fff;
+}
+
+header {
+    background-color: #52463B;
+    padding: 5px;
+}
+
+nav {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+.logo img {
+    height: 30px;
+}
+
+.user-icon img {
+    height: 24px; 
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: white; 
+    transition: font-weight 0.3s; 
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    font-weight: 600; 
+}
+
+#room-types {
+    display: none;
+    position: absolute;
+    background-color: rgba(51, 43, 37, 0.9); 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    z-index: 1000; 
+    margin-top: 10px;
+    padding: 5px 0;
+}
+
+#room-types li {
+    list-style: none; 
+    padding: 5px; 
+    font-size: 14px;
+}
+
+#room-types li a {
+    color: white; 
+    text-decoration: none; 
+    display: block;
+    transition: font-weight 0.3s;
+}
+
+#room-types li:hover {
+    font-weight: 500;
+}
+
+#room-types li::first-letter {
+    text-transform: uppercase; 
+}
