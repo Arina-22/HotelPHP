@@ -1,0 +1,116 @@
+body{
+    background-color: #FFFAF8;
+    color: #333333;
+}
+
+.review-section {
+    padding: 20px 20px 80px;
+}
+
+h2 {
+    margin: 50px  0 30px 20px;
+    font-weight: 500;
+}
+
+.review-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1;
+    margin-right: 20px; 
+}
+
+.sub-form-group{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: end;
+}
+
+.form-group {
+    margin: 0;
+    align-items: start;
+    width: 33%;
+    padding: 10px;
+}
+
+.review-form-group{
+    width: 80%;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group span{
+    color: #FF0000;
+    padding-right: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 10px;
+    border: none;
+    background-color: #FFFAF8; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    border-radius: 6px; 
+    padding: 15px 10px; 
+    width: 100%;
+}
+
+input[type="email"]{
+    margin-top: 8px;
+}
+
+textarea {
+    resize: none; 
+}
+
+.rating {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.stars {
+   display: flex;
+   flex-direction: row-reverse;
+   gap: 3px;
+}
+
+.stars input {
+    display: none; 
+}
+
+.stars label {
+    font-size: 24px;
+    color: #d3d3d3; 
+    cursor: pointer;
+    line-height: 110%;
+}
+
+.stars input:checked ~ label {
+    color: #52463B; 
+}
+
+.review-image {
+    flex: 1;
+    text-align: center; 
+}
+
+.review-image img {
+    max-width: 100%; 
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+button{
+    width: 225px;
+    margin-left: 10px;
+}
