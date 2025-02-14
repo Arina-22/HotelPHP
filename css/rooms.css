@@ -31,19 +31,23 @@ body {
     font-size: 1.5em;
 }
 
-.filter {
+.filter,
+.sort {
     color: #333333;
     padding: 20px;
     border-radius: 6px;
     margin: 20px 0; 
 }
 
-.filter h2 {
+.filter h2,
+.sort h2 {
     font-size: 1.3em;
     margin-bottom: 20px;
+    font-weight: 500;
 }
 
-.filter-options {
+.filter-options,
+.filt-sort {
     display: flex;
     flex-wrap: wrap; 
     gap: 20px; 
@@ -53,19 +57,48 @@ body {
     background-color: #FFFAF8; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
     border-radius: 6px; 
-    padding: 15px;
-    flex: 1; 
-    min-width: 150px;
+    padding: 15px 20px; 
+}
+
+.sort .filter-group{
+    padding-bottom: 40px;
 }
 
 .filter-group h3 {
     margin: 0 0 10px; 
+    font-weight: 500;
 }
 
 .filter-group label {
     display: block; 
     margin-bottom: 5px; 
-    font-size: 0.9em; /
+    font-size: 0.9em; 
+}
+
+.filter-group > input[type="number"] {
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+input[type="number"]:focus{
+    outline-color: #52463B;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #332b25; 
+    border: 2px solid #332b25; 
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    border-color: #52463B; 
 }
 
 .rooms {

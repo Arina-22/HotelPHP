@@ -23,11 +23,11 @@ $conn->close();
 
     <ul>
         <li>
-            <a href="#" id="room-toggle">Номера <img src="images/arrow.svg" alt="arrow"></a>
+            <a href="rooms.php">Номера <img src="images/arrow.svg" alt="arrow" id="room-toggle"></a>
             <ul id="room-types" style="display: none;">
                 <?php foreach ($room_types as $type): ?>
                     <li>
-                        <a href="room.php?type=<?= urlencode($type) ?>">
+                        <a href="room.php?type=<?= $type ?>">
                             <?= $type?> 
                         </a>
                     </li>

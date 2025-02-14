@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="guests">Гостей</label>
-                            <input type="number" id="guests" name="guests" min="1" max="10" value="2" required>
+                            <input type="number" id="guests" name="guests" min="1" max="4" value="2" required>
                         </div>
                         <div class="form-group">
                             <div class="room-checkboxes">
