@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 footer img {
     width: 30%;
     height: auto;

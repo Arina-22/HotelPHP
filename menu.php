@@ -34,8 +34,8 @@ $conn->close();
                 <?php endforeach; ?>
             </ul>
         </li>
-        <li><a href="#">Отзывы</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="reviews.php">Отзывы</a></li>
+        <li><a href="contacts.php">Контакты</a></li>
     </ul>
 
     <div class="user-icon">

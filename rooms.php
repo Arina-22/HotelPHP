@@ -1,6 +1,13 @@
 <?php
 require 'db.php';
 
+// массив пар типов-id:
+$type_mapping = [
+    'standard' => 1,
+    'family' => 2,
+    'luxury' => 3
+];
+
 // Инициализация переменных для фильтрации
 $room_types = isset($_POST['room_type']) ? $_POST['room_type'] : [];
 $price = isset($_POST['price']) ? $_POST['price'] : null;
@@ -15,10 +22,16 @@ $price_level = isset($_POST['price_level']) ? $_POST['price_level'] : null;
 // Начинаем формировать запрос
 $sql = "SELECT * FROM rooms WHERE 1=1";
 
+// Получаем ID типов номеров
+$room_type_ids = [];
+foreach ($room_types as $room_type) {
+    $room_type_ids[] = $type_mapping[$room_type];
+}
+
 // Фильтрация по типу номера
-if (!empty($room_types)) {
-    $types = "'" . implode("','", $room_types) . "'";
-    $sql .= " AND room_types IN ($types)";
+if (!empty($room_type_ids)) {
+    $ids = implode(",", $room_type_ids);
+    $sql .= " AND room_type_id IN ($ids)";
 }
 
 // Фильтрация по цене
@@ -67,20 +80,6 @@ if ($result->num_rows > 0) {
         $rooms[] = $row;
     }
 }
-
-
-
-// // Запрос для получения номеров (протое отображение всех номеров списком)
-// $sql = "SELECT * FROM rooms ORDER BY room_type_id, price";
-// $result = $conn->query($sql);
-
-// $rooms = [];
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         $rooms[] = $row;
-//     }
-// }
-
 $conn->close();
 ?>
 
@@ -96,6 +95,8 @@ $conn->close();
     <link rel="stylesheet" href="css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/svg" href="images/fav.svg">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playball&family=WindSong:wght@400;500&display=swap"
         rel="stylesheet">
@@ -136,7 +137,7 @@ $conn->close();
                         <div class="filter-group">
                             <h3>Кровати</h3>
                             <label><input type="checkbox" name="beds[]" value="1_bed"> 1</label>
-                        <label><input type="checkbox" name="beds[]" value="2_beds"> 2</label>
+                            <label><input type="checkbox" name="beds[]" value="2_beds"> 2</label>
                         </div>
                         <div class="filter-group">
                             <h3>C животными</h3>
@@ -209,7 +210,6 @@ $conn->close();
         <section class="gallery">
             <h2>Мы ждем тебя!</h2>
             <p>Выберите свой комфорт! Наш отель располагает разнообразными номерами.</p>
-
         </section>
 
         <?php include 'footer.php'; ?>

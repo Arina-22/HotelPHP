@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/svg" href="images/fav.svg">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playball&family=WindSong:wght@400;500&display=swap"
         rel="stylesheet">
@@ -87,18 +88,18 @@
                 <h2>Номера</h2>
                 <p>Выберите свой комфорт! Наш отель располагает разнообразными номерами, среди которых:</p>
                 <div class="room-cards">
-                    <a href="family-room.php" class="room-card">
+                    <a href="семейный-rooms.php" class="room-card">
                         <img src="images/family.svg" alt="icon">
                         <h3>Семейный</h3>
                         <p>Идеальные для отдыха с детьми, наши семейные номера обеспечивают пространство и удобства для
                             всей семьи.</p>
                     </a>
-                    <a href="standard-room.php" class="room-card">
+                    <a href="стандарт-rooms.php" class="room-card">
                         <img src="images/standard.svg" alt="icon">
                         <h3>Стандартный</h3>
                         <p>Насладитесь роскошью в наших люксовых номерах с непревзойденным комфортом и стилем.</p>
                     </a>
-                    <a href="luxury-room.php" class="room-card">
+                    <a href="люкс-rooms.php" class="room-card">
                         <img src="images/lux.svg" alt="icon">
                         <h3>Люкс</h3>
                         <p>Уютные и функциональные, стандартные номера идеально подходят для гостей, ищущих комфорт

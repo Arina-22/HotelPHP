@@ -14,3 +14,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 require 'base-rooms.php';
 ?>
+
+<head>
+    <link rel="stylesheet" href="css/family-rooms.css">
+</head>

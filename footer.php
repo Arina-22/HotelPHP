@@ -16,13 +16,13 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-logo">
-                <h1>SH<span>A</span>RM</h1>
+               <a href="index.php"><h1>SH<span>A</span>RM</h1></a>
             </div>
 
             <div class="footer-info">
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="#">Номера</a></li>
+                        <li><a href="rooms.php">Номера</a></li>
                         <li><a href="#">Отзывы</a></li>
                         <li><a href="#">Контакты</a></li>
                     </ul>
