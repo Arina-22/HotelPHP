@@ -308,47 +308,163 @@ span{
 }
 
 
+@media (max-width: 1023px) {
+    .hero {
+        height: 90vh;
+    }
 
+    .hero > h1 {
+        font-size: 2.5em;
+        width: 70%;
+        margin-bottom: 15px;
+    }
 
+    .hero > p {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
 
+    .booking-form {
+        padding: 20px;
+        margin-top: 10vh;
+    }
 
+    .booking-form > form > div {
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .form-group {
+        width: 45%;
+    }
+}
 
 @media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+    }
+
+    .hero > h1 {
+        font-size: 2.2em;
+        width: 80%;
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    .hero > p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    .booking-form {
+        width: 80%;
+        padding: 15px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .booking-form > form > div {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .form-group {
+        width: 35%;
+        margin-bottom: 0;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    .intro > .container{
+        width: 90%;
+    }
+
+    .weekend {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        font-size: 2.4em;
+    }
+
+    .weekend > div > p{
+        margin-left: 50%;
+        padding-right: 20px;
+        width: 100%;
+    }
+
+    .room-types {
+        padding: 10px 20px 60px;
+    }
+
+    .room-card {
+        width: 60%;
+    }
+
+    .room-types > .container > p {
+        margin: 0;
+        margin-bottom: 40px;
+        width: 100%;
+        text-align: center;
+    }
+
     .gallery-item {
         flex: 1 1 calc(50% - 20px);
+    }
+
+    .gallery p {
+        width: 70%;
     }
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 30px;
+    }
+
+    .hero > h1 {
+        font-size: 1.7em;
+    }
+
+    .hero > p{
+        font-size: 1em;
+    }
+
+    .booking-form {
+        width: 50%;
+        margin: 0;
+    }
+
+    .form-group {
+        width: 80%;
+        padding: 12px;
+    }
+
+    .intro > .container{
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .weekend {
+        font-size: 1.4em;
+    }
+
+    .weekend > div > p{
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .room-card {
+        width: 80%;
+    }
+
     .gallery-item {
         flex: 1 1 100%; 
+    }
+
+    button {
+        padding: 12px 20px;
     }
 }

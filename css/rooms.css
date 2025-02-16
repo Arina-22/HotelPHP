@@ -131,7 +131,7 @@ input[type="radio"]:checked {
     color: #333333;
     margin: 0 0 30px; 
     font-weight: 500;
-    font-size: 1.8em;
+    font-size: 1.6em;
 }
 
 .room-details {
@@ -198,4 +198,71 @@ button:hover {
     width: 30%;
     margin: 0 auto;
     margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .hero > h1 {
+        font-size: 2em;
+        line-height: 140%;
+    }
+
+    .room-card {
+        display: block;
+    }
+
+    .room-name > img{
+        margin: 0;
+        width: 70%;
+    }
+
+    button{
+        width: 70%;
+    }
+
+    .room-name h3 {
+        font-size: 1.2em;
+    }
+
+    .gallery-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    .gallery p {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .room-details p {
+        font-size: 0.9em;
+    }
+
+    .room-details {
+        gap: 2px;
+    }
+
+    .room-name > img{
+        width: 100%;
+    }
+
+    .room-details {
+        margin-top: 20px;
+    }
+
+    .room-card {
+        margin-top: 20px;
+    }
+
+    button{
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    .gallery-item {
+        flex: 1 1 100%; 
+    }
+
+    button {
+        padding: 12px 20px;
+    }
 }

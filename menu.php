@@ -35,7 +35,6 @@ $conn->close();
             </ul>
         </li>
         <li><a href="reviews.php">Отзывы</a></li>
-        <li><a href="contacts.php">Контакты</a></li>
     </ul>
 
     <div class="user-icon">

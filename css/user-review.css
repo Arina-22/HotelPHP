@@ -74,7 +74,6 @@ textarea {
 }
 
 .rating {
-    margin: 15px 0;
     text-align: center;
 }
 
@@ -113,4 +112,26 @@ textarea {
 button{
     width: 225px;
     margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .review-container {
+        display: block;
+    }
+
+    form{
+        align-content: space-around;
+        margin-right: 0;
+    }
+
+    h2{
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .sub-form-group {
+        gap: 25px;
+    }
 }

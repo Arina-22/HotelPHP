@@ -82,3 +82,10 @@ nav ul li a:hover {
 #room-types li::first-letter {
     text-transform: uppercase; 
 }
+
+@media (max-width: 480px) {
+    nav ul {
+        padding-bottom: 5px;
+        display: block;
+    }
+}

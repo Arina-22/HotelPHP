@@ -14,6 +14,7 @@ a{
 footer img {
     width: 30%;
     height: auto;
+    min-width: 280px;
 }
 
 span {
@@ -69,4 +70,36 @@ span {
 .footer-bottom {
     margin-top: 20px;
     font-size: 0.9em;
+}
+
+@media (max-width: 768px){
+    footer img {
+        min-width: 200px;
+    }
+
+    .footer-logo h1 {
+        font-size: 2em;
+    }
+
+    .footer-links, .footer-nav {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px){
+    .footer{
+        flex-direction: column;
+    }
+
+    .footer-logo{
+        display: flex;
+    }
+
+    .footer-logo h1 {
+        font-size: 1.7em;
+    }
+
+    .footer img{
+        margin-top: 20px;
+    }
 }

@@ -36,3 +36,28 @@
 .review p {
     font-size: 0.87em;
 }
+
+@media (max-width:768px){
+    .review {
+        width: 80%;
+    }
+
+    .reviews {
+        gap: 3vh;
+    }
+
+    .gallery {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width:480px){
+    .gallery p {
+        width: 90%; 
+    }
+
+    .gallery h2 {
+        font-size: 1.7em;
+        margin-top: 20px;
+    }    
+}

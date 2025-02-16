@@ -24,12 +24,11 @@
                     <ul>
                         <li><a href="rooms.php">Номера</a></li>
                         <li><a href="#">Отзывы</a></li>
-                        <li><a href="#">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <p>+375 (44) 112 23 33</p>
-                    <p>Пр-т Независимости, 123, Минск</p>
+                    <p>+375&nbsp;(44)&nbsp;1122333</p>
+                    <p>Гоголя, 123</p>
                 </div>
             </div>
         </div>
