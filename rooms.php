@@ -1,12 +1,47 @@
 <?php
 require 'db.php';
 
-// массив пар типов-id:
-$type_mapping = [
-    'standard' => 1,
-    'family' => 2,
-    'luxury' => 3
-];
+// поиск максимальной вместимости
+$sql_max_capacity = "SELECT MAX(capacity) AS max_capacity FROM rooms";
+$result_max = $conn->query($sql_max_capacity);
+$row = $result_max->fetch_assoc();
+$max_capacity = intval($row['max_capacity']);
+
+
+// вывод всех типов номеров (пункт фильтрации)
+$sql = 'SELECT * FROM room_types';
+$result = $conn->query($sql);
+$room_info = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $room_info[] = [
+            'id' => $row['id'],
+            'type' => $row['type'],
+        ];
+    }
+}
+
+
+// Значения bed_count
+$sql_beds = "SELECT DISTINCT bed_count FROM rooms";
+$result_beds = $conn->query($sql_beds);
+$beds_options = [];
+while ($row = $result_beds->fetch_assoc()) {
+    $beds_options[] = $row['bed_count'];
+}
+
+
+// вывод номеров
+
+$room_id = $_GET['type'];
+$sql = 'SELECT * FROM rooms';
+
+$conditions = []; // для фильтрации
+$order_conditions = []; // для сортировки
+
+if ($room_id != 'all') {
+    $conditions[] = "room_type_id = " . $room_id;
+}
 
 // Инициализация переменных для фильтрации
 $room_types = isset($_POST['room_type']) ? $_POST['room_type'] : [];
@@ -15,63 +50,61 @@ $guests = isset($_POST['guests']) ? intval($_POST['guests']) : 0;
 $beds = isset($_POST['beds']) ? $_POST['beds'] : [];
 $pets_allowed = isset($_POST['pets_allowed']) ? 1 : 0;
 
-// Инициализация переменных для сортировки
-$capacity = isset($_POST['capacity']) ? $_POST['capacity'] : null;
-$price_level = isset($_POST['price_level']) ? $_POST['price_level'] : null;
-
-// Начинаем формировать запрос
-$sql = "SELECT * FROM rooms WHERE 1=1";
-
-// Получаем ID типов номеров
-$room_type_ids = [];
-foreach ($room_types as $room_type) {
-    $room_type_ids[] = $type_mapping[$room_type];
-}
-
 // Фильтрация по типу номера
-if (!empty($room_type_ids)) {
-    $ids = implode(",", $room_type_ids);
-    $sql .= " AND room_type_id IN ($ids)";
+if (!empty($room_types)) {
+    $ids = implode(",", $room_types);
+    $conditions[] = "room_type_id IN ($ids)";
 }
 
 // Фильтрация по цене
 if ($price) {
     if ($price == 'up_to_300') {
-        $sql .= " AND price <= 300";
+        $conditions[] = "price <= 300";
     } elseif ($price == 'up_to_450') {
-        $sql .= " AND price <= 450";
+        $conditions[] = "price <= 450";
     } elseif ($price == 'up_to_600') {
-        $sql .= " AND price <= 600";
+        $conditions[] = "price <= 600";
     }
 }
 
-// Фильтрация по кол-ву гостей
+// Фильтрация по количеству гостей
 if ($guests > 0) {
-    $sql .= " AND capacity >= $guests";
+    $conditions[] = "capacity >= " . $guests;
 }
 
 // Фильтрация по количеству кроватей
 if (!empty($beds)) {
     $beds_conditions = "'" . implode("','", $beds) . "'";
-    $sql .= " AND bed_count IN ($beds_conditions)";
+    $conditions[] = "bed_count IN ($beds_conditions)";
 }
 
 // Фильтрация по животным
 if ($pets_allowed) {
-    $sql .= " AND pet_friendly = 1";
+    $conditions[] = "pet_friendly = 1";
+}
+
+// Добавление условий фильтрации
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
 // Сортировка по цене
-if ($price_level) {
-    $sql .= " ORDER BY price " . ($price_level == 'desc' ? 'DESC' : 'ASC');
+if (isset($_POST['price_level'])) {
+    $price_level = $_POST['price_level'];
+    $order_conditions[] = "price " . ($price_level == 'desc' ? 'DESC' : 'ASC');
 }
 
-// Сортировка по вместительности
-if ($capacity) {
-    $sql .= " , capacity " . ($capacity == 'desc' ? 'DESC' : 'ASC');
+// Сортировка по вместимости
+if (isset($_POST['capacity'])) {
+    $capacity = $_POST['capacity'];
+    $order_conditions[] = "capacity " . ($capacity == 'desc' ? 'DESC' : 'ASC');
 }
 
-// Запрос
+// Добавление условий сортировки
+if (!empty($order_conditions)) {
+    $sql .= " ORDER BY " . implode(", ", $order_conditions);
+}
+
 $result = $conn->query($sql);
 
 $rooms = [];
@@ -80,9 +113,9 @@ if ($result->num_rows > 0) {
         $rooms[] = $row;
     }
 }
+
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -115,13 +148,13 @@ $conn->close();
         <div class="filt-sort">
             <div class="filter">
                 <h2>Фильтровать:</h2>
-                <form id="filter-form" method="POST" action="rooms.php">
+                <form id="filter-form" method="POST">
                     <div class="filter-options">
                         <div class="filter-group">
                             <h3>Тип номера</h3>
-                            <label><input type="checkbox" name="room_type[]" value="standard"> Стандарт</label>
-                            <label><input type="checkbox" name="room_type[]" value="family"> Семейный</label>
-                            <label><input type="checkbox" name="room_type[]" value="luxury"> Люкс</label>
+                            <?php foreach ($room_info as $room): ?>
+                                <label><input type="checkbox" name="room_type[]" value="<?= $room['id'] ?>"> <?= $room['type'] ?></label>                                
+                            <?php endforeach; ?>
                         </div>
                         <div class="filter-group">
                             <h3>Стоимость</h3>
@@ -132,12 +165,17 @@ $conn->close();
 
                         <div class="filter-group">
                             <h3>Гости</h3>
-                            <input type="number" id="guests" name="guests" min="1" max="4" value="2" required>
+                            <input type="number" id="guests" name="guests" min="1" max="<?php echo $max_capacity; ?>"
+                                value="2" required>
                         </div>
                         <div class="filter-group">
                             <h3>Кровати</h3>
-                            <label><input type="checkbox" name="beds[]" value="1_bed"> 1</label>
-                            <label><input type="checkbox" name="beds[]" value="2_beds"> 2</label>
+                            <?php foreach ($beds_options as $bed_count): ?>
+                                <label>
+                                    <input type="checkbox" name="beds[]" value="<?php echo htmlspecialchars($bed_count); ?>"> 
+                                    <?php echo $bed_count; ?>
+                                </label>
+                            <?php endforeach; ?>
                         </div>
                         <div class="filter-group">
                             <h3>C животными</h3>
@@ -150,7 +188,7 @@ $conn->close();
 
             <div class="sort">
                 <h2>Сортировать:</h2>
-                <form id="filter-form" method="POST" action="rooms.php">
+                <form id="filter-form" method="POST">
                     <div class="filter-options">
                         <div class="filter-group">
                             <h3>По цене</h3>
@@ -173,6 +211,9 @@ $conn->close();
         </div>
 
         <section class="rooms">
+        <?php if (empty($rooms)): ?>
+        <p style = "color:black; text-align: center;">К сожалению, ничего не найдено по вашим критериям фильтрации.</p>
+        <?php else: ?>
             <div class="room-cards">
                 <?php foreach ($rooms as $room): ?>
                     <div class="room-card">
@@ -205,6 +246,7 @@ $conn->close();
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php endif; ?>
         </section>
 
         <section class="gallery">

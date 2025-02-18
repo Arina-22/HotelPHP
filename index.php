@@ -1,3 +1,23 @@
+<?php
+require 'db.php';
+
+$sql = 'SELECT * FROM room_types';
+$result = $conn->query($sql);
+
+$room_info = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $room_info[] = [
+            'id' => $row['id'],
+            'type' => $row['type'],
+        ];
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -71,7 +91,6 @@
                 <div>
                     <p>Дружелюбный персонал всегда готов помочь вам с любыми вопросами и сделать всё возможное, чтобы
                         ваше пребывание было комфортным.</p>
-                    <button type="button"><a href="rooms.php">Номера</a></button>
                 </div>
             </div>
         </section>
@@ -88,18 +107,21 @@
                 <h2>Номера</h2>
                 <p>Выберите свой комфорт! Наш отель располагает разнообразными номерами, среди которых:</p>
                 <div class="room-cards">
-                    <a href="семейный-rooms.php" class="room-card">
+                    <?php $room['id'] = 2 ?>
+                    <a href="rooms.php?type=<?= $room['id'] ?>" class="room-card">
                         <img src="images/family.svg" alt="icon">
                         <h3>Семейный</h3>
                         <p>Идеальные для отдыха с детьми, наши семейные номера обеспечивают пространство и удобства для
                             всей семьи.</p>
                     </a>
-                    <a href="стандарт-rooms.php" class="room-card">
+                    <?php $room['id'] = 1 ?>
+                    <a href="rooms.php?type=<?= $room['id'] ?>" class="room-card">
                         <img src="images/standard.svg" alt="icon">
                         <h3>Стандартный</h3>
                         <p>Насладитесь роскошью в наших люксовых номерах с непревзойденным комфортом и стилем.</p>
                     </a>
-                    <a href="люкс-rooms.php" class="room-card">
+                    <?php $room['id'] = 3 ?>
+                    <a href="rooms.php?type=<?= $room['id'] ?>" class="room-card">
                         <img src="images/lux.svg" alt="icon">
                         <h3>Люкс</h3>
                         <p>Уютные и функциональные, стандартные номера идеально подходят для гостей, ищущих комфорт

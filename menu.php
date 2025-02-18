@@ -1,15 +1,17 @@
 <?php
 require 'db.php';
 
-// Запрос к базе данных
-$sql = "SELECT type FROM room_types";
+$sql = 'SELECT * FROM room_types';
 $result = $conn->query($sql);
 
-$room_types = [];
+$room_info = [];
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $room_types[] = $row['type'];
+        $room_info[] = [
+            'id' => $row['id'],
+            'type' => $row['type'],
+        ];
     }
 }
 
@@ -23,13 +25,13 @@ $conn->close();
 
     <ul>
         <li>
-            <a href="rooms.php">Номера <img src="images/arrow.svg" alt="arrow" id="room-toggle"></a>
+            <a href="rooms.php?type=all">Номера <img src="images/arrow.svg" alt="arrow" id="room-toggle"></a>
             <ul id="room-types" style="display: none;">
-                <?php foreach ($room_types as $type): ?>
+                <?php foreach ($room_info as $room): ?>
                     <li>
-                        <a href="<?= $type?>-rooms.php">
-                            <?= $type ?>
-                        </a>                     
+                        <a href="rooms.php?type=<?= $room['id'] ?>">
+                            <?= $room['type']?>
+                        </a>
                     </li>
                 <?php endforeach; ?>
             </ul>
