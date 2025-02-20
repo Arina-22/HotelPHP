@@ -116,7 +116,8 @@ input[type="checkbox"]:checked {
     gap: 6px;
 }
 
-.room-checkboxes > div{
+.room-checkboxes > div,
+.room-checkboxes > label{
     display: flex;
     flex-direction: row;
 }

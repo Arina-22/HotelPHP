@@ -15,6 +15,13 @@ if ($result->num_rows > 0) {
     }
 }
 
+
+// поиск максимальной вместимости
+$sql_max_capacity = "SELECT MAX(capacity) AS max_capacity FROM rooms";
+$result_max = $conn->query($sql_max_capacity);
+$row = $result_max->fetch_assoc();
+$max_capacity = intval($row['max_capacity']);
+
 $conn->close();
 ?>
 
@@ -57,22 +64,15 @@ $conn->close();
                         </div>
                         <div class="form-group">
                             <label for="guests">Гостей</label>
-                            <input type="number" id="guests" name="guests" min="1" max="4" value="2" required>
+                            <input type="number" id="guests" name="guests" min="1" max="<?php echo $max_capacity; ?>"
+                                value="2" required>
                         </div>
                         <div class="form-group">
                             <div class="room-checkboxes">
-                                <div>
-                                    <input type="checkbox" id="standard" name="standard" />
-                                    <label for="standard">Стандартный</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="family" name="family" />
-                                    <label for="family">Семейный</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="lux" name="lux" />
-                                    <label for="lux">Люкс</label>
-                                </div>
+                                <?php foreach ($room_info as $room): ?>
+                                    <label><input type="checkbox" name="room_type[]" value="<?= $room['id'] ?>">
+                                        <?= $room['type'] ?></label>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

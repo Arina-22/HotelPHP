@@ -22,8 +22,8 @@
             <div class="footer-info">
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="rooms.php">Номера</a></li>
-                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="rooms.php?type=all">Номера</a></li>
+                        <li><a href="reviews.php">Отзывы</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'db.php';
 
 $sql = 'SELECT * FROM room_types';
@@ -40,9 +41,10 @@ $conn->close();
     </ul>
 
     <div class="user-icon">
-        <a href="registration/body.php">
+        <a href="<?php echo isset($_SESSION['name']) ? 'user-page.php' : 'registration/body.php'; ?>">
             <img src="images/icon-user.svg" alt="Иконка пользователя" />
         </a>
+
     </div>
 </nav>
 <script>

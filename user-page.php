@@ -27,7 +27,7 @@ session_start();
     <main>
         <h1 style="color:#000000"><?php echo $_SESSION["name"] ?></h1>
         <form action="registration/logout.php" method="post">
-            <button type="submit" value="Выйти" class="logout-button" onclick="confirmLogout()">Выйти</button>
+            <button type="submit" class="logout-button" onclick="confirmLogout()">Выйти из аккаунта</button>
         </form>
 
         <?php include 'footer.php'; ?>

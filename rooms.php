@@ -32,7 +32,6 @@ while ($row = $result_beds->fetch_assoc()) {
 
 
 // вывод номеров
-
 $room_id = $_GET['type'];
 $sql = 'SELECT * FROM rooms';
 
@@ -172,7 +171,7 @@ $conn->close();
                             <h3>Кровати</h3>
                             <?php foreach ($beds_options as $bed_count): ?>
                                 <label>
-                                    <input type="checkbox" name="beds[]" value="<?php echo htmlspecialchars($bed_count); ?>"> 
+                                    <input type="checkbox" name="beds[]" value="<?php echo $bed_count; ?>"> 
                                     <?php echo $bed_count; ?>
                                 </label>
                             <?php endforeach; ?>
@@ -241,7 +240,7 @@ $conn->close();
                                 <img src="images/pet.svg" alt="people">
                                 <p>C животными: <?php echo $room['pet_friendly'] ? 'Да' : 'Нет'; ?></p>
                             </div>
-                            <button type="button">Забронировать</button>
+                            <button type="button" onclick="window.location.href='booking.php?room_id=<?php echo $room['id']; ?>'">Забронировать</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
