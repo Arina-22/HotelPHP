@@ -30,7 +30,7 @@ $conn->close();
                 <?php foreach ($room_info as $room): ?>
                     <li>
                         <a href="rooms.php?type=<?= $room['id'] ?>">
-                            <?= $room['type']?>
+                            <?= $room['type'] ?>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -40,8 +40,15 @@ $conn->close();
     </ul>
 
     <div class="user-icon">
-        <a href="#">
+        <a href="registration/body.php">
             <img src="images/icon-user.svg" alt="Иконка пользователя" />
         </a>
     </div>
 </nav>
+<script>
+    document.getElementById('room-toggle').onclick = function (event) {
+        event.preventDefault();
+        const roomTypesList = document.getElementById('room-types');
+        roomTypesList.style.display = roomTypesList.style.display === 'none' ? 'block' : 'none';
+    };    
+</script>

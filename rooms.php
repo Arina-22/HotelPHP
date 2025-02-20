@@ -256,14 +256,6 @@ $conn->close();
 
         <?php include 'footer.php'; ?>
     </main>
-
-    <script>
-        document.getElementById('room-toggle').onclick = function (event) {
-            event.preventDefault();
-            const roomTypesList = document.getElementById('room-types');
-            roomTypesList.style.display = roomTypesList.style.display === 'none' ? 'block' : 'none';
-        };    
-    </script>
 </body>
 
 </html>
