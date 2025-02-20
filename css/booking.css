@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #000;
+}
+
+button {
+    background-color: #52463B;
+    color: white;
+    padding: 12px 30px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    width: 40%;
+}
+
+button>a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #332b25;
+}
+
+.booking-container {
+    width: 40%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1, h3 {
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.room-details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.room-details p {
+    font-size: 1.2rem;
+    color: #231910;
+}
+
+.room-image {
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.booking-form {
+    display: grid;
+    gap: 20px;
+}
+
+label {
+    font-size: 0.87rem;
+    color: #231910;
+}
+
+input[type="date"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+input[type="date"]:focus {
+    border-color: #231910;
+    outline: none;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1rem;
+    color: #4b463f;
+    margin: 0;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .room-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .room-image {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    button {
+        padding: 12px 20px;
+    }
+}
