@@ -48,8 +48,6 @@
                 <h3>Игорь Смирнов</h3>
             </div>
         </div>
-
-
         <?php include 'footer.php'; ?>
     </main>
 </body>

@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #333333;
+}
+
+h2, .p{
+    color: #333333;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.booking-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0 40px;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 320px;
+    text-align: left;
+}
+
+.booking-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.booking-info {
+    margin-top: 10px;
+}
+
+form{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+@media (max-width: 768px) {
+    button {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 12px 20px;
+    }
+}

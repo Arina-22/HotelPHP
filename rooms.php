@@ -218,7 +218,7 @@ $conn->close();
                     <div class="room-card">
                         <div class="room-name">
                             <h3><?php echo $room['description']; ?></h3>
-                            <img src="<?php echo $room['photo_path']; ?>" alt="<?php echo $room['description']; ?>">
+                            <img src="<?php echo $room['photo_path']; ?>" alt="фото">
                         </div>
                         <div class="room-details">
                             <div class="one-room-details">
