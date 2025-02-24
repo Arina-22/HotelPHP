@@ -110,9 +110,9 @@ $user = mysqli_fetch_assoc($user_result);
                 <d class="user-data">
                     <p>ФИО: <?php echo $user['username']; ?></p>
                     <label>Email:</label>
-                    <input type="email" placeholder="<?php echo $user['email']; ?>">
+                    <input type="email" value=<?php echo $user['email']; ?>>
                     <label>Телефон:</label>
-                    <input type="phone" name="phone" id="phone" placeholder="<?php echo $user['phone']; ?>">
+                    <input type="phone" name="phone" id="phone" value=<?php echo $user['phone']; ?>>
             </div>
             <button type="submit" class="submit-btn">Забронировать</button>
         </form>

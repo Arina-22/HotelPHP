@@ -1,9 +1,13 @@
 .gallery {
-    padding-bottom: 60px;
+    padding: 50px 0;
 }
 
 .gallery p {
     width: 55%;
+}
+
+.gallery h2{
+    margin-top: 60px;
 }
 
 .reviews {
@@ -28,13 +32,14 @@
 }
 
 .review h3 {
-    font-size: 0.87em;
+    font-size: 1.1em;
     font-weight: 500;
-    margin: 20px 0 0;
+    margin: 5px 0;
 }
 
 .review p {
-    font-size: 0.87em;
+    font-size: 0.88em;
+    margin: 10px 0 20px 0;
 }
 
 @media (max-width:768px){

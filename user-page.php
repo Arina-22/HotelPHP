@@ -86,9 +86,9 @@ if ($result->num_rows > 0) {
                         $checkoutDate = $booking['check_out_date'];
                         ?>
                         <?php if ($currentDate > $checkoutDate): ?>
-                            <button class="review-button" onclick="window.location.href='user-review.php?room_id=<?php echo $booking['room_id']; ?>'">Оставить отзыв</button>
+                            <button class="review-button" onclick="window.location.href='user-review.php?room_id=<?php echo $booking['room_id']; ?>&reservation_id=<?php echo $booking['reservation_id']; ?>'">Оставить отзыв</button>
                         <?php else: ?>
-                            <button class="cancel-button" onclick="confirmCancel(<?php echo $booking['reservation_id']; ?>)">Отменить</button>
+                            <button class="cancel-button" style="background-color:#979797" onclick="confirmCancel(<?php echo $booking['reservation_id']; ?>)">Отменить</button>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>

@@ -1,3 +1,23 @@
+<?php 
+session_start();
+include 'db.php';
+
+// Запрос для получения всех отзывов
+$query = "SELECT r.*, u.username, rm.description AS description 
+          FROM reviews r 
+          JOIN users u ON r.user_id = u.id 
+          JOIN rooms rm ON r.room_id = rm.id 
+          ORDER BY r.rating DESC";
+$result = $conn->query($query);
+
+$reviews = [];
+if ($result->num_rows > 0) {
+    while ($review = $result->fetch_assoc()) {
+        $reviews[] = $review;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -29,24 +49,22 @@
         </section>
 
         <div class="reviews">
+            <?php foreach ($reviews as $review): ?>
             <div class="review">
-                <img src="images/5star.svg" alt="rating">
-                <p>Прекрасный отель в центре Минска! Уютные номера, отличный сервис и дружелюбный персонал.
-                    Особенно понравился завтрак!</p>
-                <h3>Анна Петрова</h3>
+                <h3 class="description"><?php echo $review['description']; ?></h3>
+                <div class="rating">
+                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <?php if ($i <= $review['rating']): ?>
+                            <span>★</span>
+                        <?php else: ?>
+                            <span>☆</span>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
+                <p><?php echo $review['commentary']; ?></p>
+                <p style="color:rgb(113, 113, 113)"><?php echo $review['username']; ?></p>
             </div>
-            <div class="review">
-                <img src="images/5star.svg" alt="rating">
-                <p>Люкс превзошел все наши ожидания! Великолепный вид из окна и отличное качество обслуживания.
-                    Обязательно вернемся снова!</p>
-                <h3>Елена Ковалёва</h3>
-            </div>
-            <div class="review">
-                <img src="images/5star.svg" alt="rating">
-                <p>Останавливались в семейном номере. Просторно и комфортно, наши дети были в восторге! Также удобно,
-                    что можно было взять с собой питомца.</p>
-                <h3>Игорь Смирнов</h3>
-            </div>
+            <?php endforeach; ?>
         </div>
         <?php include 'footer.php'; ?>
     </main>
