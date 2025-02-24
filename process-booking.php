@@ -16,7 +16,7 @@ if ($check_out < $check_in){
     exit();
 }
 
-if ($check_out = $check_in){
+if ($check_out == $check_in){
     echo "<script>alert('День выезда не может быть в день заезда.'); window.location.href = 'booking.php?room_id=$room_id ?>';</script>";
     exit();
 }

@@ -64,12 +64,8 @@ $user = mysqli_fetch_assoc($user_result);
     <title>SHARM</title>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/booking.css">
-
-    <style>
-        input:invalid {
-            background-color: #ffcccc;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -85,15 +81,6 @@ $user = mysqli_fetch_assoc($user_result);
         </div>
 
         <h3>Выберите даты для бронирования</h3>
-        <?php if (!empty($unavailable_dates)) { ?>
-            <p>Недоступные даты:</p>
-            <ul>
-                <?php foreach ($unavailable_dates as $day): ?>
-                    <li style="color:#4b463f"><?php echo $day; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php } ?>
-
         <form action="process-booking.php" method="POST" class="booking-form">
             <input type="hidden" name="room_id" value="<?php echo $room_id; ?>">
             <input type="hidden" name="price_per_night" value="<?php echo $price_per_night; ?>">
@@ -119,54 +106,22 @@ $user = mysqli_fetch_assoc($user_result);
     </div>
 
     <script>
+        let unavailableDates = <?php echo json_encode($unavailable_dates); ?>;
         document.addEventListener("DOMContentLoaded", function () {
-            let checkInInput = document.getElementById("check_in_date");
-            let checkOutInput = document.getElementById("check_out_date");
+            let disabledDates = unavailableDates.map(date => new Date(date));
 
-            let unavailableDates = <?php echo json_encode($unavailable_dates); ?>; // Получаем забронированные даты из PHP
+            flatpickr("#check_in_date", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                disable: disabledDates,
+            });
 
-            function markUnavailableDates(input) {
-                input.addEventListener("change", function () {
-                    if (unavailableDates.includes(this.value)) {
-                        this.setCustomValidity("Эта дата уже занята, выберите другую.");
-                        this.style.backgroundColor = "#ffcccc"; // Красный фон
-                    } else {
-                        this.setCustomValidity("");
-                        this.style.backgroundColor = "#ccfccc"; // Зеленый фон
-                    }
-
-                    checkDateRange(); // Проверка диапазона при выборе даты
-                });
-            }
-
-            function checkDateRange() {
-                let checkInDate = new Date(checkInInput.value);
-                let checkOutDate = new Date(checkOutInput.value);
-
-                if (checkInInput.value && checkOutInput.value) {
-                    for (let dateStr of unavailableDates) {
-                        let blockedDate = new Date(dateStr);
-
-                        // Если заблокированная дата находится в диапазоне заезда и выезда
-                        if (blockedDate >= checkInDate && blockedDate <= checkOutDate) {
-                            checkInInput.style.backgroundColor = "#ffcccc";
-                            checkOutInput.style.backgroundColor = "#ffcccc";
-                            checkOutInput.setCustomValidity("Выбранный период включает занятые даты.");
-                            return;
-                        }
-                    }
-                }
-
-                // Если всё в порядке, делаем зеленый фон
-                checkInInput.style.backgroundColor = "#ccfccc";
-                checkOutInput.style.backgroundColor = "#ccfccc";
-                checkOutInput.setCustomValidity("");
-            }
-
-            markUnavailableDates(checkInInput);
-            markUnavailableDates(checkOutInput);
+            flatpickr("#check_out_date", {
+                dateFormat: "Y-m-d",
+                minDate: new Date().fp_incr(1),
+                disable: disabledDates,
+            });
         });
     </script>
 </body>
-
 </html>
