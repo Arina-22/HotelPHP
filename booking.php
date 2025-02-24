@@ -63,7 +63,7 @@ $user = mysqli_fetch_assoc($user_result);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHARM</title>
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/booking.css">\
+    <link rel="stylesheet" href="css/booking.css">
 
     <style>
         input:invalid {
@@ -107,65 +107,66 @@ $user = mysqli_fetch_assoc($user_result);
 
             <div class="user-info">
                 <h3>Данные пользователя</h3>
-                <div class="user-data">
+                <d class="user-data">
                     <p>ФИО: <?php echo $user['username']; ?></p>
-                    <p>Email: <?php echo $user['email']; ?></p>
-                    <p>Телефон: <?php echo $user['phone']; ?></p>
-                </div>
+                    <label>Email:</label>
+                    <input type="email" placeholder="<?php echo $user['email']; ?>">
+                    <label>Телефон:</label>
+                    <input type="phone" name="phone" id="phone" placeholder="<?php echo $user['phone']; ?>">
             </div>
-
             <button type="submit" class="submit-btn">Забронировать</button>
         </form>
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let checkInInput = document.getElementById("check_in_date");
-        let checkOutInput = document.getElementById("check_out_date");
+        document.addEventListener("DOMContentLoaded", function () {
+            let checkInInput = document.getElementById("check_in_date");
+            let checkOutInput = document.getElementById("check_out_date");
 
-        let unavailableDates = <?php echo json_encode($unavailable_dates); ?>; // Получаем забронированные даты из PHP
+            let unavailableDates = <?php echo json_encode($unavailable_dates); ?>; // Получаем забронированные даты из PHP
 
-        function markUnavailableDates(input) {
-            input.addEventListener("input", function () {
-                if (unavailableDates.includes(this.value)) {
-                    this.setCustomValidity("Эта дата уже занята, выберите другую.");
-                    this.style.backgroundColor = "#ffcccc"; // Красный фон
-                } else {
-                    this.setCustomValidity("");
-                    this.style.backgroundColor = "#ccfccc"; // Зеленый фон
-                }
-
-                checkDateRange(); // Проверка диапазона при выборе даты
-            });
-        }
-
-        function checkDateRange() {
-            let checkInDate = new Date(checkInInput.value);
-            let checkOutDate = new Date(checkOutInput.value);
-
-            if (checkInInput.value && checkOutInput.value) {
-                for (let dateStr of unavailableDates) {
-                    let blockedDate = new Date(dateStr);
-
-                    // Если заблокированная дата находится в диапазоне заезда и выезда
-                    if (blockedDate >= checkInDate && blockedDate <= checkOutDate) {
-                        checkInInput.style.backgroundColor = "#ffcccc";
-                        checkOutInput.style.backgroundColor = "#ffcccc";
-                        checkOutInput.setCustomValidity("Выбранный период включает занятые даты.");
-                        return;
+            function markUnavailableDates(input) {
+                input.addEventListener("change", function () {
+                    if (unavailableDates.includes(this.value)) {
+                        this.setCustomValidity("Эта дата уже занята, выберите другую.");
+                        this.style.backgroundColor = "#ffcccc"; // Красный фон
+                    } else {
+                        this.setCustomValidity("");
+                        this.style.backgroundColor = "#ccfccc"; // Зеленый фон
                     }
-                }
+
+                    checkDateRange(); // Проверка диапазона при выборе даты
+                });
             }
 
-            // Если всё в порядке, делаем зеленый фон
-            checkInInput.style.backgroundColor = "#ccfccc";
-            checkOutInput.style.backgroundColor = "#ccfccc";
-            checkOutInput.setCustomValidity("");
-        }
+            function checkDateRange() {
+                let checkInDate = new Date(checkInInput.value);
+                let checkOutDate = new Date(checkOutInput.value);
 
-        markUnavailableDates(checkInInput);
-        markUnavailableDates(checkOutInput);
-    });
-</script>
+                if (checkInInput.value && checkOutInput.value) {
+                    for (let dateStr of unavailableDates) {
+                        let blockedDate = new Date(dateStr);
+
+                        // Если заблокированная дата находится в диапазоне заезда и выезда
+                        if (blockedDate >= checkInDate && blockedDate <= checkOutDate) {
+                            checkInInput.style.backgroundColor = "#ffcccc";
+                            checkOutInput.style.backgroundColor = "#ffcccc";
+                            checkOutInput.setCustomValidity("Выбранный период включает занятые даты.");
+                            return;
+                        }
+                    }
+                }
+
+                // Если всё в порядке, делаем зеленый фон
+                checkInInput.style.backgroundColor = "#ccfccc";
+                checkOutInput.style.backgroundColor = "#ccfccc";
+                checkOutInput.setCustomValidity("");
+            }
+
+            markUnavailableDates(checkInInput);
+            markUnavailableDates(checkOutInput);
+        });
+    </script>
 </body>
+
 </html>

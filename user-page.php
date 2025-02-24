@@ -14,7 +14,7 @@ if (isset($_SESSION["name"])) {
 }
 
 // Запрос на получение бронирований пользователя
-$query = "SELECT r.id AS reservation_id, rm.description, rm.photo_path, r.total_price, r.check_in_date, r.check_out_date
+$query = "SELECT r.id AS reservation_id, r.room_id, rm.description, rm.photo_path, r.total_price, r.check_in_date, r.check_out_date
           FROM reservations r
           JOIN rooms rm ON r.room_id = rm.id
           WHERE r.user_id = $user_id
@@ -74,13 +74,22 @@ if ($result->num_rows > 0) {
                         <img src="<?php echo $booking['photo_path']; ?>" alt="Фото">
                         <div class="booking-info">
                             <h3><?php echo $booking['description']; ?></h3>
+                            <h3 style="display: none;"><?php echo $booking['room_id']; ?></h3>
                             <p><strong>Дата:</strong> 
                                 <?php echo $booking['check_in_date']; ?> - <?php echo $booking['check_out_date']; ?>
                             </p>
                             <p><strong>Общая стоимость:</strong> <?php echo $booking['total_price']; ?> BYN</p>
                         </div>
-                        <button class="cancel-button"
-                            onclick="confirmCancel(<?php echo $booking['reservation_id']; ?>)">Отменить</button>
+                        <?php
+                        // Получаем текущую дату и дату выезда
+                        $currentDate = date('Y-m-d');
+                        $checkoutDate = $booking['check_out_date'];
+                        ?>
+                        <?php if ($currentDate > $checkoutDate): ?>
+                            <button class="review-button" onclick="window.location.href='user-review.php?room_id=<?php echo $booking['room_id']; ?>'">Оставить отзыв</button>
+                        <?php else: ?>
+                            <button class="cancel-button" onclick="confirmCancel(<?php echo $booking['reservation_id']; ?>)">Отменить</button>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

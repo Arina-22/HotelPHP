@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     clearString($email);
 
-    // Проверка email (убрала !)
+    // Проверка email
     if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i', $email)) {
         $emailError .= "Некорректная почта. ";
     } else {
