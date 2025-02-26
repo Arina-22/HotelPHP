@@ -25,15 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($password) {
             // Валидация пароля
-            if (empty($password)) {
-                $response["errors"]["password"] = "Заполните поле.";
-            } elseif (!preg_match('/^[а-яА-Яa-zA-Z]{8,}$/u', $password)) {
+            if (!preg_match('/^[а-яА-Яa-zA-Z]{8,}$/u', $password)) {
                 $response["errors"]["password"] = "Пароль должен содержать только буквы и быть не менее 8 символов.";
             }
         }
 
         echo json_encode($response);
-        exit(); // Завершаем обработку, если это валидация
+        exit();
     }
 
     // Основная обработка авторизации
