@@ -41,7 +41,6 @@
                         <span class="error" id="phone-error"></span>
                     </div>
                     <a href="login.php">Уже есть аккаунт?</a>
-                    <input type="hidden" name="form-submitted" value="true">
                     <input type="submit" class="button" value="Зарегистрироваться">
                 </form>
             </div>
