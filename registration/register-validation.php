@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Валидация поля "first-password" (пароль)
+        // Валидация поля "first-password"
         if ($password) {
             if (!preg_match('/^[а-яА-Яa-zA-Z]{8,}$/u', $password)) {
                 $response['errors']['firstPassword'] = 'Пароль должен содержать только буквы и быть не менее 8 символов.';
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Валидация поля "second-password" (повтор пароля)
+        // Валидация поля "second-password" 
         if ($secondpassword) {
             if ($secondpassword !== $password) {
                 $response['errors']['secondPassword'] = 'Пароли не совпадают.';
@@ -85,16 +85,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Успешная регистрация
                 $_SESSION["name"] = $name;
                 $response["success"] = true;
-                $response["message"] = "Вы успешно зарегистрировались!";
             } else {
-                $response["errors"]["database"] = "Ошибка при регистрации. Попробуйте снова.";
+                $response["errors"]["database"] = "Ошибка при регистрации.";
             }
         } catch (mysqli_sql_exception $e) {
             // Ошибка при выполнении SQL-запроса
-            $response["errors"]["database"] = "Ошибка при выполнении запроса: " . $e->getMessage();
+            // window.location.href = '../user-page.php';
+            $response["errors"]["database"] = "Ошибка при выполнении запроса: " . $e;
         }
     }
-
-    echo json_encode($response);
-    exit();
+    
+    // echo json_encode($response);
+    // exit();
 }

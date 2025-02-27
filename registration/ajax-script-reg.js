@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         var name = this.value;
         sendAjaxRequest('name', name, function (response,field) {
             if (response.errors && response.errors.name) {
-                document.getElementById('name').textContent = response.errors.name;
+                document.getElementById('name-error').textContent = response.errors.name;
             } else {
-                document.getElementById('name').textContent = '';
+                document.getElementById('name-error').textContent = '';
             }
         });
     });
@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.success) {
                     window.location.href = '../user-page.php'; // Переход на страницу после успешной регистрации
                 } else {
+                    window.location.href = 'body.php'; 
                     // Обработка ошибок, если регистрация не успешна
                     if (response.errors) {
                         handleFormErrors(response.errors);
