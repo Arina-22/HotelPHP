@@ -64,8 +64,9 @@ $user = mysqli_fetch_assoc($user_result);
     <title>SHARM</title>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/booking.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="css/flatpickr.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
+    <script src="flatpickr.js"></script>
 </head>
 
 <body>

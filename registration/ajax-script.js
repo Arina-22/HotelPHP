@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 callback(response, fieldName);
             }
         };
+        // передаем имя поля
         xhr.send(fieldName + "=" + encodeURIComponent(fieldValue) + "&validate=true");
     }
 

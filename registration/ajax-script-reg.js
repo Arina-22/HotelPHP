@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('#regForm input').forEach(function (input) {
         input.addEventListener('input', function () {
             var formData = new FormData(document.getElementById('regForm'));
-            formData.append("validate", "true");
+            formData.append("validate", "true"); // добавялем параметр validate чтобы указать, что это валидация
 
             sendAjaxRequest(new URLSearchParams(formData).toString(), function (response) {
                 handleFormErrors(response.errors || {});

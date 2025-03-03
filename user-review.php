@@ -19,7 +19,7 @@ if (isset($_GET['reservation_id'])) {
         $user_name = $user['username'];
         $email = $user['email'];
         $user_id = $user['id'];
-        // echo $user_name;
+        echo $user_name;
     }
 }
 
@@ -67,7 +67,7 @@ if ($result && $room = mysqli_fetch_assoc($result)) {
                     <div class="sub-form-group">
                         <div class="form-group">
                             <label for="name"><span>*</span>Имя</label>
-                            <input type="text" id="name" name="name" required value=<?php echo $user_name?>>
+                            <input type="text" id="name" name="name" required value=<?php echo $_SESSION['name']?>>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
