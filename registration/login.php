@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION["name"] ) && $_SESSION["name"] != NULL) {
+    header('Location: ../user-page.php'); 
+    exit(); 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

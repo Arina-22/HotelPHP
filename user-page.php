@@ -2,6 +2,11 @@
 session_start();
 include 'db.php';
 
+if ($_SESSION["name"] == NULL) {
+    header('Location: index.php'); 
+    exit(); 
+}
+
 // Получаем ID пользователя из БД по его имени в сессии
 if (isset($_SESSION["name"])) {
     $username = $_SESSION["name"];

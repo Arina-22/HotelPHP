@@ -44,7 +44,6 @@ $conn->close();
         <a href="<?php echo isset($_SESSION['name']) ? 'user-page.php' : 'registration/body.php'; ?>">
             <img src="images/icon-user.svg" alt="Иконка пользователя" />
         </a>
-
     </div>
 </nav>
 <script>

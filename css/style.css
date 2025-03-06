@@ -5,6 +5,8 @@ body {
     color: #fff;
 }
 
+/* chown root:root .htaccess */
+
 .hero {
     background-image: url('../images/hero_background.jpg');
     background-size: cover;
